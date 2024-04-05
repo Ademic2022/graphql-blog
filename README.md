@@ -1,4 +1,3 @@
-```markdown
 # Django GraphQL Blog
 
 This project is a Django-based blog application with GraphQL API support.
