@@ -1,5 +1,4 @@
 import graphene
-
 from posts.models import Post
 from posts.object_types import PostType
 
@@ -12,4 +11,7 @@ class PostQuery(graphene.ObjectType):
         return Post.objects.all()
 
     def resolve_post(self, info, id):
-        return Post.objects.get(id=id)
+        try:
+            return Post.objects.get(id=id)
+        except Post.DoesNotExist:
+            return None
