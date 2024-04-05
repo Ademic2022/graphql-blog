@@ -4,14 +4,20 @@ services:
   # Django web server
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/app
+      - postgres_data:/app/db
     ports:
       - "8000:8000"
+    depends_on:
+      - db
+  db:
+    image: nouchka/sqlite3:latest
+    volumes:
+      - ./data/db:/root/db
     environment:
-      - DEBUG=True
-      - DATABASE_URL=sqlite:////app/db.sqlite3  
+      - SQLITE3_DB=db.sqlite3
 
 volumes:
   postgres_data:
