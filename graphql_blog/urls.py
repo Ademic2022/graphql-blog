@@ -21,11 +21,13 @@ from django.contrib.auth.views import LoginView
 from graphene_django.views import GraphQLView
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
-
+from django.views.generic import RedirectView
 from core.views import PrivateGraphQLView
 from .schema import schema
 
 urlpatterns = [
+    path('', RedirectView.as_view(url='/graphql/')),
+
     path("admin/", admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('graphql/', PrivateGraphQLView.as_view(graphiql=True, schema=schema)),
