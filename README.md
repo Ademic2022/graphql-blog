@@ -165,3 +165,16 @@ query post {
   }
 }
 ```
+
+## Authentication
+
+To access the GraphQL API Playground and perform operations, you need to be authenticated. Follow the steps below:
+
+1. Navigate to http://localhost:8000/accounts/login to sign in.
+2. Once signed in, you can access the GraphQL API Playground at http://localhost:8000/graphql/.
+3. To sign out, you can navigate to http://localhost:8000/accounts/logout.
+4. If you don't have an account, you can sign up at http://localhost:8000/accounts/signup.
+
+
+
+This README includes API documentation as well as authentication details.
